@@ -1,9 +1,14 @@
-import example.pepita
+import example.*
+describe "tests de parte 1" {
+  test "roberto 90kg puede llevar un paquete que esta pago en un camion con un acoplado" {
+        camion.modificarAcoplados(1)
+        roberto.cambiarTransporte(camion)
+        assert.notThat(paquete.puedeSerEntregado(roberto,brooklyn))
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
   }
-
+  test "neo con credito no puede llevar un paquete que no esta pago a la matrix" {
+        neo.cargarCredito()
+        paquete.noEstaPago()
+        assert.notThat(paquete.puedeSerEntregado(neo,matrix))
+  }
 }
