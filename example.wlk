@@ -5,6 +5,30 @@ object paquete{
     }
     method estaPago() = estaPago
     method noEstaPago() {estaPago = false}
+    method precio() = 50
+}
+object paquetito{
+    var estaPago = true
+    method estaPago() = estaPago
+    method puedeSerEntregado(unMensajero,unDestino){
+        return true
+    }
+    method precio() = 0
+}
+object paquetonViajero{
+    const destinos = []
+    var montoPagado = 0
+    method precio() {
+        return destinos.size() * 100
+    }
+    method pagoParcial(monto){montoPagado = montoPagado + monto}
+    method estaPago(){
+        return montoPagado >= self.precio()
+    }
+    method puedeSerEntregado(unMensajero,unDestino){
+        return self.estaPago() and destinos.all({ destino => unMensajero.puedeLlegar(destino) })
+    }
+
 }
 object brooklyn{
     method puedePasar(unMensajero) {

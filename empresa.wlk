@@ -1,3 +1,4 @@
+import example.*
 object empresaMensajeria{
     const mensajeros = []
     method contratarMensajero(nuevoMensajero){
@@ -12,10 +13,16 @@ object empresaMensajeria{
     method esGrande(){
         return mensajeros.size() >= 2
     }
-    method paquetePuedeSerEntregadoPorPrimerEmpleado(){
-        //pensarlo
+    method paquetePuedeSerEntregadoPorPrimerEmpleado(destino){
+        return paquete.puedeSerEntregado(self.primerEmpleado(), destino)
     }  
+    method primerEmpleado(){
+        return mensajeros.first()
+    }
     method pesoUltimoMensajero(){
-        //pensarlo
+        return self.ultimoMensajero().peso()
+    }
+    method ultimoMensajero(){
+        return mensajeros.last()
     }
 }
