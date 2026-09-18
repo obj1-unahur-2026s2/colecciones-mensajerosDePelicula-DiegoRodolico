@@ -47,13 +47,14 @@ object roberto{
     method cambiarTransporte(nuevoTransporte){transporte = nuevoTransporte}
     method peso() = transporte.peso() + peso
     method puedeHacerLLamada() = false
+    method puedeEntregar(estePaquete, destino){return self.puedeLlegar(destino) and estePaquete.puedeSerEntregado(self, destino)}
 }
 object bicicleta{
     method peso() = 5
 }
 object camion{
     const acoplado = 500
-    var cantidadAcoplados = 0
+    var cantidadAcoplados = 1
     method modificarAcoplados(nuevaCantidad) {cantidadAcoplados = nuevaCantidad}
     method peso() = acoplado * cantidadAcoplados
 }
@@ -61,9 +62,10 @@ object chuckNorris{
     method puedeLlegar(destino){return destino.puedePasar(self)}
     method peso() = 80
     method puedeHacerLLamada() = true
+    method puedeEntregar(estePaquete, destino){return self.puedeLlegar(destino) and estePaquete.puedeSerEntregado(self, destino)}
 }
 object neo{
-    var credito = 0
+    var credito = 1
     method puedeLlegar(destino){return destino.puedePasar(self)}
     method cargarCredito() {credito  = credito + 1}
     method hacerLlamada() {credito  = credito - 1}
@@ -74,4 +76,5 @@ object neo{
         }
         return false
     }
+    method puedeEntregar(estePaquete, destino){return self.puedeLlegar(destino) and estePaquete.puedeSerEntregado(self, destino)}
 }

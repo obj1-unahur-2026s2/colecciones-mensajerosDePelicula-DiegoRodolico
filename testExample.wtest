@@ -1,4 +1,5 @@
 import example.*
+import empresa.*
 describe "tests de parte 1" {
   test "roberto 90kg puede llevar un paquete que esta pago en un camion con un acoplado" {
         camion.modificarAcoplados(1)
@@ -10,5 +11,15 @@ describe "tests de parte 1" {
         neo.cargarCredito()
         paquete.noEstaPago()
         assert.notThat(paquete.puedeSerEntregado(neo,matrix))
+  }
+}
+describe "test de parte 2 y 3" {
+  test "algun mensajero de la empresa puede entregar un paquete" {
+      neo.cargarCredito()
+      empresaMensajeria.contratarMensajero(neo)
+      assert.that(empresaMensajeria.puedeEntregar(paquete, matrix))
+  }
+  test "saber si una mensajeria tiene sobrepeso"{
+      assert.
   }
 }
